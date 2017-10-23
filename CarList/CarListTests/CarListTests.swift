@@ -9,28 +9,60 @@
 import XCTest
 @testable import CarList
 
+// MARK: - CarListTests: XCTestCase
 class CarListTests: XCTestCase {
 
+  // MARK: - Property List
+  var sessionUnderTest: URLSession!
+  var restClient: RestClient!
+  var carInfoList: [CarInfo]!
+
+  // MARK: - Set up
   override func setUp() {
     super.setUp()
-    // Put setup code here. This method is called before the invocation of each test method in the class.
+    sessionUnderTest = URLSession(configuration: URLSessionConfiguration.default)
+    restClient = RestClient()
   }
 
+  // MARK: - Tear Down
   override func tearDown() {
-    // Put teardown code here. This method is called after the invocation of each test method in the class.
     super.tearDown()
+    sessionUnderTest = nil
+    restClient = nil
+    carInfoList = nil
   }
 
-  func testExample() {
-    // This is an example of a functional test case.
-    // Use XCTAssert and related functions to verify your tests produce the correct results.
-  }
+  // MARK: - Test Car List Fetching
+  func testValidCallToCarListGetHTTPStatusCode200() {
 
-  func testPerformanceExample() {
-    // This is an example of a performance test case.
-    self.measure {
-      // Put the code you want to measure the time of here.
+    let promise = expectation(description: "Receive car list json")
+    guard let url = URL(string: Constants.API.BaseURL) else { return }
+    restClient.taskForResource(with: url) { (carInfoList, error) in
+      if let error = error {
+        XCTFail("\(error.localizedDescription)")
+      } else {
+        guard let carInfoList = carInfoList else { return }
+        self.carInfoList = carInfoList
+        promise.fulfill()
+      }
     }
+    waitForExpectations(timeout: 5, handler: nil)
   }
 
+  // MARK: - Test the number of Car List
+  func testFetchedCarInfoList() {
+    testValidCallToCarListGetHTTPStatusCode200()
+    XCTAssertEqual(carInfoList.count, 28, "couldn't fetch 26 items")
+  }
+  // MARK: - Test the value of the Car List array 
+  func testFirstFetchedCarHasExpectedValues() {
+    testValidCallToCarListGetHTTPStatusCode200()
+    verifyFetchedCarListHasExpectedValues(index:0)
+  }
+  func verifyFetchedCarListHasExpectedValues(index: Int) {
+    let car = carInfoList[index]
+    XCTAssertEqual(car.modelIdentifier, "mini")
+    XCTAssertEqual(car.modelName, "MINI")
+    XCTAssertEqual(car.name, "Vanessa")
+  }
 }
