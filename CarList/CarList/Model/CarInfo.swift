@@ -119,3 +119,25 @@ class CarInfo: NSObject, MKAnnotation {
     self.imageUrl = carImageUrl
   }
 }
+
+extension CarInfo {
+  override var description: String {
+    let carInfo = Constants.IdDescPrefix + "\(self.idKey), " +
+                  Constants.ModelIDDescPrefix + "\(self.modelIdentifier), " +
+                  Constants.ModelNameDescPrefix + "\(self.modelName), " +
+                  Constants.NameDescPrefix + "\(self.name), " +
+                  Constants.MakeDescPrefix + "\(self.make), " +
+                  Constants.GroupDescPrefix + "\(self.group), " +
+                  Constants.ColorPrefix + "\(self.color), " +
+                  Constants.SeriesDescPrefix + "\(self.series), " +
+                  Constants.FuelTypeDescPrefix + "\(self.fuelType), " +
+                  Constants.FuelLevelDescPrefix + "\(self.fuelLevel), " +
+                  Constants.TransmissionDescPrefix + "\(self.transmission), " +
+                  Constants.LicensePlateDescPrefix + "\(self.licensePlate), " +
+                  Constants.LatitudeDescPrefix + "\(self.latitude), " +
+                  Constants.LongitudeDescPrefix + "\(self.longitude), " +
+                  Constants.InnerClenlinessDescPrefix + "\(self.innerCleanliness), " +
+                  Constants.ImageUrlDescPrefix + "\(self.imageUrl)\n"
+    return carInfo
+  }
+}

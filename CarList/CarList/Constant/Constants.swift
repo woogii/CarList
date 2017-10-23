@@ -7,31 +7,40 @@
 //
 
 import Foundation
+import CoreLocation
+import UIKit
 
 // MARK: - Constants
 struct Constants {
+
+  static let RegionRadius: CLLocationDistance = 1000
+  static let InitialLocation                  = CLLocation(latitude: 48.163106, longitude: 11.564346)
+  static let AnnotationCallOutOffset          = CGPoint(x: -5, y: 5)
+  static let MapViewPinID                     = "pin"
+
+  static let IdDescPrefix              = "Id : "
+  static let ModelIDDescPrefix         = "ModelId: "
+  static let ModelNameDescPrefix       = "Model Name: "
+  static let NameDescPrefix            = "Name: "
+  static let MakeDescPrefix            = "Make : "
+  static let GroupDescPrefix           = "Group: "
+  static let ColorPrefix               = "Color: "
+  static let SeriesDescPrefix          = "Series: "
+  static let FuelTypeDescPrefix        = "FuelType : "
+  static let FuelLevelDescPrefix       = "FuelLevel: "
+  static let TransmissionDescPrefix    = "Transmission: "
+  static let LicensePlateDescPrefix    = "LicensePlate : "
+  static let LatitudeDescPrefix        = "Latitude : "
+  static let LongitudeDescPrefix       = "Longitude : "
+  static let InnerClenlinessDescPrefix = "InnerClenliness: "
+  static let ImageUrlDescPrefix        = "ImageUrl : "
 
   // MARK: - API
   struct API {
 
     static let BaseURL = "http://www.codetalk.de/cars.json"
-
-    // MARK: - URL Query List
-    struct QueryItem {
-      static let FormatKey           = "format"
-      static let FormatValue         = "xml"
-      static let ResultsPerPageKey   = "results_per_page"
-      static let ResultsPerPageValue = "20"
-      static let SubIdKey            = "sub_id"
-      static let SubIdValue          = "siwook"
-      static let ActionKey           = "action"
-      static let ActionValue         = "remove"
-      static let APIKey              = "api_key"
-      static let APIValue            = "MTkxNzY4"
-      static let ImageIdKey          = "image_id"
-      static let SizeKey             = "size"
-      static let SizeValue           = "small"
-    }
+    static let BaseImageURL = "https://prod.drive-now-content.com/fileadmin/user_upload_global/assets/cars/"
+    static let BaseImageURLSuffix = "/2x/car.png"
 
     // MARK: - JSON Parsing Key List
     struct JSONParsingKeys {

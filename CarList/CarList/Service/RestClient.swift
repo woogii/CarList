@@ -29,7 +29,6 @@ struct RestClient {
           guard let json = try JSONSerialization.jsonObject(with: data, options: []) as? [[String: Any]] else {
             return
           }
-          print(json)
           carInfoList = json.flatMap {
             do {
               return try CarInfo(dictionary: $0)
