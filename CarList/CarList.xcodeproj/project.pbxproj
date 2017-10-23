@@ -10,6 +10,8 @@
 		3C76A5706915F556710B18FC /* Pods_CarList.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4D3D23AF1A5250075E7F3FCD /* Pods_CarList.framework */; };
 		B83376A71F9E0FE100F59F35 /* CarInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = B83376A61F9E0FE100F59F35 /* CarInfo.swift */; };
 		B83376AD1F9E21BB00F59F35 /* RestClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = B83376AC1F9E21BB00F59F35 /* RestClient.swift */; };
+		B83D56B51F9E409E00D7FE7D /* CarInfoListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B83D56B41F9E409E00D7FE7D /* CarInfoListTableViewCell.swift */; };
+		B83D56B71F9E41C500D7FE7D /* CarInfoListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B83D56B61F9E41C500D7FE7D /* CarInfoListTableViewController.swift */; };
 		B8EEC1551F9E09B700784C1B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8EEC1541F9E09B700784C1B /* AppDelegate.swift */; };
 		B8EEC1571F9E09B700784C1B /* CarInfoInMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8EEC1561F9E09B700784C1B /* CarInfoInMapViewController.swift */; };
 		B8EEC15A1F9E09B700784C1B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B8EEC1581F9E09B700784C1B /* Main.storyboard */; };
@@ -37,8 +39,10 @@
 		5D2BD626C879164E39E5944B /* Pods-CarList.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CarList.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CarList/Pods-CarList.debug.xcconfig"; sourceTree = "<group>"; };
 		70F627AF6B523F063696A790 /* Pods_CarListTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CarListTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		81D1601444CD94DB2C617849 /* Pods-CarListTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CarListTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CarListTests/Pods-CarListTests.debug.xcconfig"; sourceTree = "<group>"; };
-		B83376A61F9E0FE100F59F35 /* CarInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CarInfo.swift; path = CarInfo.swift; sourceTree = "<group>"; };
-		B83376AC1F9E21BB00F59F35 /* RestClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RestClient.swift; path = RestClient.swift; sourceTree = "<group>"; };
+		B83376A61F9E0FE100F59F35 /* CarInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CarInfo.swift; sourceTree = "<group>"; };
+		B83376AC1F9E21BB00F59F35 /* RestClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RestClient.swift; sourceTree = "<group>"; };
+		B83D56B41F9E409E00D7FE7D /* CarInfoListTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CarInfoListTableViewCell.swift; sourceTree = "<group>"; };
+		B83D56B61F9E41C500D7FE7D /* CarInfoListTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CarInfoListTableViewController.swift; sourceTree = "<group>"; };
 		B8EEC1511F9E09B700784C1B /* CarList.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CarList.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B8EEC1541F9E09B700784C1B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B8EEC1561F9E09B700784C1B /* CarInfoInMapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarInfoInMapViewController.swift; sourceTree = "<group>"; };
@@ -106,12 +110,12 @@
 			children = (
 				B8EEC17B1F9E0B6700784C1B /* AppDelegate */,
 				B8EEC1771F9E0B4F00784C1B /* Constant */,
-				B8EEC1781F9E0B5400784C1B /* Controller */,
 				B8EEC17A1F9E0B6200784C1B /* Model */,
+				B8EEC1791F9E0B5A00784C1B /* View */,
+				B8EEC1781F9E0B5400784C1B /* Controller */,
 				B8EEC17C1F9E0BA300784C1B /* Service */,
 				B8EEC1761F9E0B1100784C1B /* Storyboard */,
 				B8EEC1751F9E0B0600784C1B /* Supporting Files */,
-				B8EEC1791F9E0B5A00784C1B /* View */,
 			);
 			path = CarList;
 			sourceTree = "<group>";
@@ -155,6 +159,7 @@
 			isa = PBXGroup;
 			children = (
 				B8EEC1561F9E09B700784C1B /* CarInfoInMapViewController.swift */,
+				B83D56B61F9E41C500D7FE7D /* CarInfoListTableViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -162,6 +167,7 @@
 		B8EEC1791F9E0B5A00784C1B /* View */ = {
 			isa = PBXGroup;
 			children = (
+				B83D56B41F9E409E00D7FE7D /* CarInfoListTableViewCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -417,10 +423,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B83D56B71F9E41C500D7FE7D /* CarInfoListTableViewController.swift in Sources */,
 				B8EEC1571F9E09B700784C1B /* CarInfoInMapViewController.swift in Sources */,
 				B8EEC1551F9E09B700784C1B /* AppDelegate.swift in Sources */,
 				B83376A71F9E0FE100F59F35 /* CarInfo.swift in Sources */,
 				B83376AD1F9E21BB00F59F35 /* RestClient.swift in Sources */,
+				B83D56B51F9E409E00D7FE7D /* CarInfoListTableViewCell.swift in Sources */,
 				B8EEC17E1F9E0BCC00784C1B /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

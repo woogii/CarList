@@ -14,21 +14,32 @@ class CarInfoInMapViewController: UIViewController {
 
   // MARK : - Property List
   @IBOutlet weak var mapView: MKMapView!
+  @IBOutlet weak var listButton: UIButton!
   private let restClient = RestClient()
+  private var carInfoList = [CarInfo]()
 
   // MARK : - View Life Cycle
   override func viewDidLoad() {
     super.viewDidLoad()
-    centerMapOnLocation(location: Constants.InitialLocation)
+    centerMapOnLocation(location: Constants.MapInfo.InitialLocation)
+    addListButtonShadow()
     requestCarInformation()
   }
 
+  // MARK : - Add Button Shadow
+  private func addListButtonShadow() {
+    listButton.layer.cornerRadius  = Constants.ListButtonCornerRadius
+    listButton.layer.shadowColor   = UIColor.black.cgColor
+    listButton.layer.shadowOffset  = CGSize.zero
+    listButton.layer.shadowOpacity = Constants.ListButtonShadowOpacity
+    listButton.layer.shadowPath    = UIBezierPath(rect: listButton.bounds).cgPath
+  }
   // MARK : - Set Center Coordinates
   private func centerMapOnLocation(location: CLLocation) {
     let coordinateRegion
       = MKCoordinateRegionMakeWithDistance(location.coordinate,
-                                          Constants.RegionRadius * 2.0,
-                                          Constants.RegionRadius * 2.0)
+                                          Constants.MapInfo.RegionRadius * 2.0,
+                                          Constants.MapInfo.RegionRadius * 2.0)
     mapView.setRegion(coordinateRegion, animated: true)
   }
 
@@ -43,10 +54,21 @@ class CarInfoInMapViewController: UIViewController {
       guard let carInfoList = carInfoList else {
         return
       }
-      print(carInfoList)
+      self.carInfoList = carInfoList
       DispatchQueue.main.async {
         self.mapView.addAnnotations(carInfoList)
       }
+    }
+  }
+  override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    if segue.identifier == Constants.SegueID.ShowCarInfoList {
+      guard let destinationNavVC = segue.destination as? UINavigationController else {
+        return
+      }
+      guard let destinationVC = destinationNavVC.topViewController as? CarInfoListTableViewController else {
+        return
+      }
+      destinationVC.carInfoList = carInfoList
     }
   }
 }
@@ -63,10 +85,10 @@ extension CarInfoInMapViewController: MKMapViewDelegate {
     var view: MKPinAnnotationView
 
     guard let dequeuedView =
-      mapView.dequeueReusableAnnotationView(withIdentifier: Constants.MapViewPinID) as? MKPinAnnotationView else {
-      view = MKPinAnnotationView(annotation: annotation, reuseIdentifier: Constants.MapViewPinID)
+      mapView.dequeueReusableAnnotationView(withIdentifier: Constants.MapInfo.PinID) as? MKPinAnnotationView else {
+      view = MKPinAnnotationView(annotation: annotation, reuseIdentifier: Constants.MapInfo.PinID)
       view.canShowCallout = true
-      view.calloutOffset = CGPoint(x: -5, y: 5)
+      view.calloutOffset = Constants.MapInfo.AnnotationCallOutOffset
       return view
     }
 

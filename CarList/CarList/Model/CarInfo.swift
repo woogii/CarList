@@ -122,22 +122,22 @@ class CarInfo: NSObject, MKAnnotation {
 
 extension CarInfo {
   override var description: String {
-    let carInfo = Constants.IdDescPrefix + "\(self.idKey), " +
-                  Constants.ModelIDDescPrefix + "\(self.modelIdentifier), " +
-                  Constants.ModelNameDescPrefix + "\(self.modelName), " +
-                  Constants.NameDescPrefix + "\(self.name), " +
-                  Constants.MakeDescPrefix + "\(self.make), " +
-                  Constants.GroupDescPrefix + "\(self.group), " +
-                  Constants.ColorPrefix + "\(self.color), " +
-                  Constants.SeriesDescPrefix + "\(self.series), " +
-                  Constants.FuelTypeDescPrefix + "\(self.fuelType), " +
-                  Constants.FuelLevelDescPrefix + "\(self.fuelLevel), " +
-                  Constants.TransmissionDescPrefix + "\(self.transmission), " +
-                  Constants.LicensePlateDescPrefix + "\(self.licensePlate), " +
-                  Constants.LatitudeDescPrefix + "\(self.latitude), " +
-                  Constants.LongitudeDescPrefix + "\(self.longitude), " +
-                  Constants.InnerClenlinessDescPrefix + "\(self.innerCleanliness), " +
-                  Constants.ImageUrlDescPrefix + "\(self.imageUrl)\n"
+    let carInfo = Constants.CarInfoDescPrefix.CarID           + "\(self.idKey), "            +
+                  Constants.CarInfoDescPrefix.ModelID         + "\(self.modelIdentifier), "  +
+                  Constants.CarInfoDescPrefix.ModelName       + "\(self.modelName), "        +
+                  Constants.CarInfoDescPrefix.Name            + "\(self.name), "             +
+                  Constants.CarInfoDescPrefix.Make            + "\(self.make), "             +
+                  Constants.CarInfoDescPrefix.Group           + "\(self.group), "            +
+                  Constants.CarInfoDescPrefix.Color           + "\(self.color), "            +
+                  Constants.CarInfoDescPrefix.Series          + "\(self.series), "           +
+                  Constants.CarInfoDescPrefix.FuelType        + "\(self.fuelType), "         +
+                  Constants.CarInfoDescPrefix.FuelLevel       + "\(self.fuelLevel), "        +
+                  Constants.CarInfoDescPrefix.Transmission    + "\(self.transmission), "     +
+                  Constants.CarInfoDescPrefix.LicensePlate    + "\(self.licensePlate), "     +
+                  Constants.CarInfoDescPrefix.Latitude        + "\(self.latitude), "         +
+                  Constants.CarInfoDescPrefix.Longitude       + "\(self.longitude), "        +
+                  Constants.CarInfoDescPrefix.InnerClenliness + "\(self.innerCleanliness), " +
+                  Constants.CarInfoDescPrefix.ImageUrl        + "\(self.imageUrl)\n"
     return carInfo
   }
 }

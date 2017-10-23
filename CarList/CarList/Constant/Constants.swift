@@ -13,27 +13,55 @@ import UIKit
 // MARK: - Constants
 struct Constants {
 
-  static let RegionRadius: CLLocationDistance = 1000
-  static let InitialLocation                  = CLLocation(latitude: 48.163106, longitude: 11.564346)
-  static let AnnotationCallOutOffset          = CGPoint(x: -5, y: 5)
-  static let MapViewPinID                     = "pin"
+  // MARK: - Map Information
+  struct MapInfo {
+    static let RegionRadius: CLLocationDistance = 1000
+    static let InitialLocation                  = CLLocation(latitude: 48.163106, longitude: 11.564346)
+    static let AnnotationCallOutOffset          = CGPoint(x: -5, y: 5)
+    static let PinID                            = "pin"
+  }
 
-  static let IdDescPrefix              = "Id : "
-  static let ModelIDDescPrefix         = "ModelId: "
-  static let ModelNameDescPrefix       = "Model Name: "
-  static let NameDescPrefix            = "Name: "
-  static let MakeDescPrefix            = "Make : "
-  static let GroupDescPrefix           = "Group: "
-  static let ColorPrefix               = "Color: "
-  static let SeriesDescPrefix          = "Series: "
-  static let FuelTypeDescPrefix        = "FuelType : "
-  static let FuelLevelDescPrefix       = "FuelLevel: "
-  static let TransmissionDescPrefix    = "Transmission: "
-  static let LicensePlateDescPrefix    = "LicensePlate : "
-  static let LatitudeDescPrefix        = "Latitude : "
-  static let LongitudeDescPrefix       = "Longitude : "
-  static let InnerClenlinessDescPrefix = "InnerClenliness: "
-  static let ImageUrlDescPrefix        = "ImageUrl : "
+  // MARK: - Car Information Description Prefix
+  struct CarInfoDescPrefix {
+    static let CarID            = "Id : "
+    static let ModelID          = "ModelId: "
+    static let ModelName        = "Model Name: "
+    static let Name             = "Name: "
+    static let Make             = "Make : "
+    static let Group            = "Group: "
+    static let Color            = "Color: "
+    static let Series           = "Series: "
+    static let FuelType         = "FuelType : "
+    static let FuelLevel        = "FuelLevel: "
+    static let Transmission     = "Transmission: "
+    static let LicensePlate     = "LicensePlate : "
+    static let Latitude         = "Latitude : "
+    static let Longitude        = "Longitude : "
+    static let InnerClenliness  = "InnerClenliness: "
+    static let ImageUrl         = "ImageUrl : "
+  }
+
+  // MARK: - Fatal Error
+  struct FatalError {
+    static let UnexpectedCarInfoTableCell = "Unexpected TableViewCell"
+  }
+
+  static let ListButtonCornerRadius: CGFloat = 5.0
+  static let ListButtonShadowOpacity: Float  = 0.3
+  static let PlaceHolderImageName            = "ic_noImage"
+
+  static let FuelLevelPrefix = "Fuel level "
+  static let FuelLevelUnit   = "%"
+  static let DistanceFormat  = "%0.1f km"
+
+  // MARK: - Segue ID
+  struct SegueID {
+    static let ShowCarInfoList = "showCarInfoList"
+  }
+  // MARK: - Cell ID
+  struct CellID {
+    static let CarInfoList = "carInfoListTableViewCell"
+  }
 
   // MARK: - API
   struct API {
@@ -86,5 +114,4 @@ struct Constants {
     static let LatitudeInvalid         = "The value of Latitude average is not valid"
     static let LongitudeInvalid        = "The value of Longitude average is not valid"
   }
-
 }
