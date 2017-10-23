@@ -15,7 +15,7 @@ struct Constants {
 
   // MARK: - Map Information
   struct MapInfo {
-    static let RegionRadius: CLLocationDistance = 1000
+    static let RegionRadius: CLLocationDistance = 2000
     static let InitialLocation                  = CLLocation(latitude: 48.163106, longitude: 11.564346)
     static let AnnotationCallOutOffset          = CGPoint(x: -5, y: 5)
     static let PinID                            = "pin"

@@ -68,6 +68,7 @@ class CarInfoListTableViewCell: UITableViewCell {
     }
   }
 
+  // MARK: - Construct Image Url
   private func constructCarImageUrl() -> URL? {
     let imageUrlString = Constants.API.BaseImageURL + "/"  + carInfo.modelIdentifier
                          + "/" + carInfo.color + Constants.API.BaseImageURLSuffix

@@ -60,6 +60,7 @@ class CarInfoInMapViewController: UIViewController {
       }
     }
   }
+  // MARK : - Prepare for Segue
   override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
     if segue.identifier == Constants.SegueID.ShowCarInfoList {
       guard let destinationNavVC = segue.destination as? UINavigationController else {
