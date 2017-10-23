@@ -36,7 +36,7 @@ class CarInfo: NSObject, MKAnnotation {
   let innerCleanliness: String
   let imageUrl: String
   var title: String? {
-    return make + modelName
+    return make + " " + modelName
   }
   var subtitle: String? {
     return licensePlate

@@ -8,6 +8,7 @@
 
 import UIKit
 import MapKit
+import SDWebImage
 
 // MARK: - CarInfoInMapViewController: UIViewController
 class CarInfoInMapViewController: UIViewController {
@@ -15,6 +16,15 @@ class CarInfoInMapViewController: UIViewController {
   // MARK : - Property List
   @IBOutlet weak var mapView: MKMapView!
   @IBOutlet weak var listButton: UIButton!
+  @IBOutlet weak var carImageView: UIImageView!
+  @IBOutlet weak var carInfoViewBottomConstraint: NSLayoutConstraint!
+  @IBOutlet weak var carInfoView: UIView!
+  @IBOutlet weak var nameLabel: UILabel!
+  @IBOutlet weak var licensePlateLabel: UILabel!
+  @IBOutlet weak var manufacturerLabel: UILabel!
+  @IBOutlet weak var modelNameLabel: UILabel!
+  @IBOutlet weak var fuelLevelLabel: UILabel!
+  @IBOutlet weak var distanceLabel: UILabel!
   private let restClient = RestClient()
   private var carInfoList = [CarInfo]()
 
@@ -96,5 +106,92 @@ extension CarInfoInMapViewController: MKMapViewDelegate {
     dequeuedView.annotation = annotation
     view = dequeuedView
     return view
+  }
+  func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
+
+    UIView.animate(withDuration: 0.2, delay: 0.0, options: UIViewAnimationOptions(), animations: {
+
+      self.carInfoViewBottomConstraint.constant = 0
+      self.view.layoutIfNeeded()
+      self.displayCardInfo(selectedAnnotation: view)
+
+    }, completion: nil)
+
+  }
+
+  private func displayCardInfo(selectedAnnotation: MKAnnotationView) {
+    guard let carInfo = selectedAnnotation.annotation as? CarInfo else { return }
+    setNameLabel(carInfo: carInfo)
+    setModelNameLabel(carInfo: carInfo)
+    setCarImageView(carInfo: carInfo)
+    setLicensePlateLabel(carInfo: carInfo)
+    setManufacturerLabel(carInfo: carInfo)
+    setModelNameLabel(carInfo: carInfo)
+    setFuelLevelLabel(carInfo: carInfo)
+    setDistanceLabel(carInfo: carInfo)
+  }
+
+  private func setNameLabel(carInfo: CarInfo) {
+    nameLabel.text = Constants.NameLabelPrefix + carInfo.name + Constants.NameLabelSuffix
+  }
+
+  private func setCarImageView(carInfo: CarInfo) {
+
+    let imageUrlString = Constants.API.BaseImageURL + "/"  + carInfo.modelIdentifier
+      + "/" + carInfo.color + Constants.API.BaseImageURLSuffix
+
+    let imageUrl = URL(string: imageUrlString)!
+
+    // Fetch Image from Memory Cache
+    if let image = SDImageCache.shared().imageFromMemoryCache(forKey: imageUrl.absoluteString) {
+      self.carImageView.image = image
+    } else {
+      self.carImageView
+        .sd_setImage(with: imageUrl, placeholderImage: UIImage(named: Constants.PlaceHolderImageName),
+                     options: SDWebImageOptions()) { (image, error, _, _) in
+                      if image != nil {
+                        DispatchQueue.main.async {
+                          self.carImageView.image = image
+                        }
+                      } else {
+                        print(error?.localizedDescription as Any)
+                      }
+      }
+    }
+  }
+  // MARK: - Set Car License Info
+  private func setLicensePlateLabel(carInfo: CarInfo) {
+    licensePlateLabel.text = carInfo.licensePlate
+  }
+  // MARK: - Set Car Manufacturer Info
+  private func setManufacturerLabel(carInfo: CarInfo) {
+    manufacturerLabel.text = carInfo.make
+  }
+  // MARK: - Set Car Model Name Info
+  private func setModelNameLabel(carInfo: CarInfo) {
+    modelNameLabel.text = carInfo.modelName
+  }
+  // MARK: - Set Car Fuel Level Info
+  private func setFuelLevelLabel(carInfo: CarInfo) {
+    fuelLevelLabel.text = Constants.FuelLevelPrefix + "\(carInfo.fuelLevel * 100.0)" + Constants.FuelLevelUnit
+  }
+  // MARK: - Set Car Distance Info
+  private func setDistanceLabel(carInfo: CarInfo) {
+    let destLocation = CLLocation(latitude: carInfo.latitude, longitude: carInfo.longitude)
+    var distanceInMeters = Constants.MapInfo.InitialLocation.distance(from: destLocation)
+    if distanceInMeters > 1000 {
+      distanceInMeters /= 1000
+      distanceLabel.text = String(format: Constants.DistanceKmFormat, distanceInMeters)
+    } else {
+      distanceLabel.text = String(format: Constants.DistanceMeterFormat, distanceInMeters)
+    }
+  }
+
+  func mapView(_ mapView: MKMapView, didDeselect view: MKAnnotationView) {
+
+    UIView.animate(withDuration: 0.2, delay: 0.0, options: UIViewAnimationOptions(), animations: {
+      self.carInfoViewBottomConstraint.constant = Constants.CarInfoViewBottomConstraint
+      self.view.layoutIfNeeded()
+    }, completion: nil)
   }
 }

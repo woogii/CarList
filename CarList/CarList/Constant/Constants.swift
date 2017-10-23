@@ -50,9 +50,14 @@ struct Constants {
   static let ListButtonShadowOpacity: Float  = 0.3
   static let PlaceHolderImageName            = "ic_noImage"
 
-  static let FuelLevelPrefix = "Fuel level "
-  static let FuelLevelUnit   = "%"
-  static let DistanceFormat  = "%0.1f km"
+  static let FuelLevelPrefix      = "Fuel level "
+  static let FuelLevelUnit        = "%"
+  static let DistanceKmFormat     = "%0.1f km"
+  static let DistanceMeterFormat  = "%0.1f m"
+  static let NameLabelPrefix      = "Hi, I am "
+  static let NameLabelSuffix      = "."
+
+  static let CarInfoViewBottomConstraint: CGFloat = -200
 
   // MARK: - Segue ID
   struct SegueID {

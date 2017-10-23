@@ -99,7 +99,9 @@ class CarInfoListTableViewCell: UITableViewCell {
     var distanceInMeters = Constants.MapInfo.InitialLocation.distance(from: destLocation)
     if distanceInMeters > 1000 {
       distanceInMeters /= 1000
+      distanceLabel.text = String(format: Constants.DistanceKmFormat, distanceInMeters)
+    } else {
+      distanceLabel.text = String(format: Constants.DistanceMeterFormat, distanceInMeters)
     }
-    distanceLabel.text = String(format: Constants.DistanceFormat, distanceInMeters)
   }
 }
