@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		3C76A5706915F556710B18FC /* Pods_CarList.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4D3D23AF1A5250075E7F3FCD /* Pods_CarList.framework */; };
+		B83376A71F9E0FE100F59F35 /* CarInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = B83376A61F9E0FE100F59F35 /* CarInfo.swift */; };
+		B83376AD1F9E21BB00F59F35 /* RestClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = B83376AC1F9E21BB00F59F35 /* RestClient.swift */; };
 		B8EEC1551F9E09B700784C1B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8EEC1541F9E09B700784C1B /* AppDelegate.swift */; };
 		B8EEC1571F9E09B700784C1B /* CarInfoInMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8EEC1561F9E09B700784C1B /* CarInfoInMapViewController.swift */; };
 		B8EEC15A1F9E09B700784C1B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B8EEC1581F9E09B700784C1B /* Main.storyboard */; };
@@ -35,6 +37,8 @@
 		5D2BD626C879164E39E5944B /* Pods-CarList.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CarList.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CarList/Pods-CarList.debug.xcconfig"; sourceTree = "<group>"; };
 		70F627AF6B523F063696A790 /* Pods_CarListTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CarListTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		81D1601444CD94DB2C617849 /* Pods-CarListTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CarListTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CarListTests/Pods-CarListTests.debug.xcconfig"; sourceTree = "<group>"; };
+		B83376A61F9E0FE100F59F35 /* CarInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CarInfo.swift; path = CarList/CarInfo.swift; sourceTree = SOURCE_ROOT; };
+		B83376AC1F9E21BB00F59F35 /* RestClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RestClient.swift; sourceTree = "<group>"; };
 		B8EEC1511F9E09B700784C1B /* CarList.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CarList.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B8EEC1541F9E09B700784C1B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B8EEC1561F9E09B700784C1B /* CarInfoInMapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarInfoInMapViewController.swift; sourceTree = "<group>"; };
@@ -106,6 +110,7 @@
 				B8EEC17A1F9E0B6200784C1B /* Model */,
 				B8EEC17C1F9E0BA300784C1B /* Service */,
 				B8EEC1761F9E0B1100784C1B /* Storyboard */,
+				B83376AC1F9E21BB00F59F35 /* RestClient.swift */,
 				B8EEC1751F9E0B0600784C1B /* Supporting Files */,
 				B8EEC1791F9E0B5A00784C1B /* View */,
 			);
@@ -127,7 +132,6 @@
 				B8EEC15B1F9E09B700784C1B /* Assets.xcassets */,
 				B8EEC1601F9E09B700784C1B /* Info.plist */,
 			);
-			name = "Supporting Files";
 			path = "Supporting Files";
 			sourceTree = "<group>";
 		};
@@ -137,7 +141,6 @@
 				B8EEC15D1F9E09B700784C1B /* LaunchScreen.storyboard */,
 				B8EEC1581F9E09B700784C1B /* Main.storyboard */,
 			);
-			name = Storyboard;
 			path = Storyboard;
 			sourceTree = "<group>";
 		};
@@ -146,7 +149,6 @@
 			children = (
 				B8EEC17D1F9E0BCC00784C1B /* Constants.swift */,
 			);
-			name = Constant;
 			path = Constant;
 			sourceTree = "<group>";
 		};
@@ -155,7 +157,6 @@
 			children = (
 				B8EEC1561F9E09B700784C1B /* CarInfoInMapViewController.swift */,
 			);
-			name = Controller;
 			path = Controller;
 			sourceTree = "<group>";
 		};
@@ -163,15 +164,14 @@
 			isa = PBXGroup;
 			children = (
 			);
-			name = View;
 			path = View;
 			sourceTree = "<group>";
 		};
 		B8EEC17A1F9E0B6200784C1B /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				B83376A61F9E0FE100F59F35 /* CarInfo.swift */,
 			);
-			name = Model;
 			path = Model;
 			sourceTree = "<group>";
 		};
@@ -180,7 +180,6 @@
 			children = (
 				B8EEC1541F9E09B700784C1B /* AppDelegate.swift */,
 			);
-			name = AppDelegate;
 			path = AppDelegate;
 			sourceTree = "<group>";
 		};
@@ -188,7 +187,6 @@
 			isa = PBXGroup;
 			children = (
 			);
-			name = Service;
 			path = Service;
 			sourceTree = "<group>";
 		};
@@ -421,6 +419,8 @@
 			files = (
 				B8EEC1571F9E09B700784C1B /* CarInfoInMapViewController.swift in Sources */,
 				B8EEC1551F9E09B700784C1B /* AppDelegate.swift in Sources */,
+				B83376A71F9E0FE100F59F35 /* CarInfo.swift in Sources */,
+				B83376AD1F9E21BB00F59F35 /* RestClient.swift in Sources */,
 				B8EEC17E1F9E0BCC00784C1B /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -635,6 +635,7 @@
 				B8EEC1701F9E09B700784C1B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		B8EEC1711F9E09B700784C1B /* Build configuration list for PBXNativeTarget "CarListTests" */ = {
 			isa = XCConfigurationList;
@@ -643,6 +644,7 @@
 				B8EEC1731F9E09B700784C1B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
