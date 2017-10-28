@@ -140,7 +140,7 @@ extension CarInfoInMapViewController: MKMapViewDelegate {
     let imageUrlString = Constants.API.BaseImageURL + "/"  + carInfo.modelIdentifier
       + "/" + carInfo.color + Constants.API.BaseImageURLSuffix
 
-    let imageUrl = URL(string: imageUrlString)!
+    guard let imageUrl = URL(string: imageUrlString) else { return }
 
     // Fetch Image from Memory Cache
     if let image = SDImageCache.shared().imageFromMemoryCache(forKey: imageUrl.absoluteString) {
